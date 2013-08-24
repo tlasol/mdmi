@@ -15,7 +15,7 @@ function SpriteObject(layer, name, x, y, size) {
         if (_x > Game.size.width - 20) { _x = Game.size.width - 20; }
         if (_y < 25) { _y = 25; }
         if (_y > Game.size.height - 25) { _y = Game.size.height - 25; }
-        _spriteIndex += 0.25;
+        _spriteIndex += 0.1;
 
         if (_activeSprite != null) {
             _activeSprite.setPosition(_x, _y);
@@ -71,3 +71,18 @@ function SpriteObject(layer, name, x, y, size) {
 
 SpriteObject.POSITIONS = [ "bottom", "left", "top", "right" ];
 SpriteObject.DEFAULT_SIZE = 4;
+
+function Enemy(layer, name, update, size) {
+    var x = 0; var y = 0; //TODO random
+    Enemy.superclass(layer, name, x, y, size);
+    this.move(0, 0);
+    this.update = update;
+}
+
+Object.inheritance(Enemy, SpriteObject);
+
+function Poring(layer, size) {
+    Enemy.superclass(layer, "poring", function() {
+
+    }, size);
+}

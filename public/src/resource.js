@@ -31,7 +31,10 @@ var g_resources = [
     //effect
 ];
 
-var Game = { size : { width : 1024, height : 576  } };
+var Game = {
+    size : { width : 1024, height : 576  },
+    level : { enemyProbability : 0.05 }
+};
 
 function loadResources() {
     var cache = cc.SpriteFrameCache.getInstance();
