@@ -130,6 +130,22 @@ function Poring(layer, speed, size) {
 
 Object.inheritance(Poring, Enemy);
 
+function Catbug(layer, speed, size) {
+    Catbug.superclass.call(this, layer, "catbug", function() {
+        var dx = Game.size.width / 2 - this.x;
+        var dy = Game.size.height / 2 - this.y;
+        if (dx * dx + dy * dy < 10) {
+            return;
+        }
+        var l = Math.sqrt(dx * dx + dy * dy);
+        dx = dx * speed / l;
+        dy = dy * speed / l;
+        this.move(dx, dy);
+    }, size, 3);
+}
+
+Object.inheritance(Catbug, Enemy);
+
 function Player(layer, name, x, y, size, zOrder) {
     Player.superclass.call(this, layer, name, x, y, size, zOrder);
 

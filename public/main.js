@@ -2,6 +2,7 @@ var myApp = new (cc.Application.extend({
     config:document['ccConfig'],
     ctor:function (scene) {
         this._super();
+
         this.startScene = scene;
         cc.COCOS2D_DEBUG = this.config['COCOS2D_DEBUG'];
         cc.initDebugSetting();
