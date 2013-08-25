@@ -119,31 +119,40 @@ function Enemy(layer, name, update, size, hp) {
 Object.inheritance(Enemy, SpriteObject);
 
 function Poring(layer, speed, size) {
-    Poring.superclass.call(this, layer, "poring", function() {
+    Poring.superclass.call(this, layer, "poring", function(layer, dt) {
         var dx = Game.size.width / 2 - this.x;
         var dy = Game.size.height / 2 - this.y;
         if (dx * dx + dy * dy < 10) {
             return;
         }
         var l = Math.sqrt(dx * dx + dy * dy);
-        dx = dx * speed / l;
-        dy = dy * speed / l;
+        dx = dx * speed * dt / (l * 1000) ;
+        dy = dy * speed * dt / (l * 1000);
         this.move(dx, dy);
-    }, size, 3);
+    }, size, 2);
 }
 
 Object.inheritance(Poring, Enemy);
 
 function Catbug(layer, speed, size) {
-    Catbug.superclass.call(this, layer, "catbug", function() {
-        var dx = Game.size.width / 2 - this.x;
-        var dy = Game.size.height / 2 - this.y;
+    this.hitTime = 0;
+    this.reloadingTime = 1000;
+    this.damagePower = 1;
+
+    Catbug.superclass.call(this, layer, "catbug", function(layer, dt) {
+        var dx = layer.player.x - this.x;
+        var dy = layer.player.y - this.y;
         if (dx * dx + dy * dy < 10) {
+            var now = (new Date()).getTime();
+            if (this.hitTime + this.reloadingTime <= now) {
+                layer.player.damage(layer, this.damagePower);
+                this.hitTime = now;
+            }
             return;
         }
         var l = Math.sqrt(dx * dx + dy * dy);
-        dx = dx * speed / l;
-        dy = dy * speed / l;
+        dx = dx * speed * dt / (l * 1000) ;
+        dy = dy * speed * dt / (l * 1000);
         this.move(dx, dy);
     }, size, 3);
 }
@@ -155,12 +164,13 @@ function Player(layer, name, x, y, size, zOrder) {
 
     this.hp = 6;
     this.mana = 6;
-    this.damage = 1;
+    this.damagePower = 1;
     this.damageZone = 75;
     this.damageAngle = 45;
     this.hitTime = new Date().getTime();
     this.knockOut = 50;
     this.reloadingTime = 1000;
+    this.speed = 250;
 
     this.aura = cc.Sprite.createWithSpriteFrameName("aura_" + this.damageAngle);
     this.aura.setPosition(x, y);
@@ -186,27 +196,37 @@ function Player(layer, name, x, y, size, zOrder) {
         if (this.old_hp != this.hp) {
             if (this.hp_sprite != null) {
                 this.hp_sprite.removeFromParent();
+                this.hp_sprite = null;
             }
 
-            this.hp_sprite = cc.Sprite.createWithSpriteFrameName("health_" + this.hp);
-            this.hp_sprite.setPosition(79, 83);
-            layer.addChild(this.hp_sprite);
-            this.old_hp = this.hp;
+            if (this.hp > 0) {
+                this.hp_sprite = cc.Sprite.createWithSpriteFrameName("health_" + this.hp);
+                this.hp_sprite.setPosition(79, 83);
+                layer.addChild(this.hp_sprite);
+                this.old_hp = this.hp;
+            }
         }
 
         if (this.old_mana != this.mana) {
             if (this.mana_sprite != null) {
                 this.mana_sprite.removeFromParent();
+                this.mana_sprite = null;
             }
 
-            this.mana_sprite = cc.Sprite.createWithSpriteFrameName("mana_" + this.mana);
-            this.mana_sprite.setPosition(798, 83);
-            layer.addChild(this.mana_sprite);
-            this.old_mana = this.mana;
-            ha = this.mana_sprite;
+            if (this.mana > 0) {
+                this.mana_sprite = cc.Sprite.createWithSpriteFrameName("mana_" + this.mana);
+                this.mana_sprite.setPosition(798, 83);
+                layer.addChild(this.mana_sprite);
+                this.old_mana = this.mana;
+            }
         }
-    }
+    };
+    this.damage = function(layer, damage) {
+        this.hp -= damage;
+        if (this.hp <= 0) {
+            layer.state = "death";
+        }
+    };
 }
 
 Object.inheritance(Player, SpriteObject);
-var ha;

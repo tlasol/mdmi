@@ -2,11 +2,13 @@ var Level = cc.LayerColor.extend({
     portalIndex : 0,
     portalSprites : [],
     portalSprite : null,
+    state : "play",
 
     playerVector : { x : 0, y : 0 },
-    playerSpeed : 4,
     enemies : [],
-    createdEnemies : [],
+    portalTimer : 10000,
+    portalState : "normal",
+    last : null,
 
     init:function () {
         this._super();
@@ -16,15 +18,26 @@ var Level = cc.LayerColor.extend({
         background.setZOrder(0);
         this.addChild(background);
 
+        var orbs = cc.Sprite.create(s_Orbs);
+        orbs.setPosition(cc.p(440, 83));
+        orbs.setZOrder(501);
+        this.addChild(orbs);
+
         this.setKeyboardEnabled(true);
         this.setMouseEnabled(true);
+
+        this.portalLabel = cc.LabelTTF.create("10.00", "Arial Bold", 48);
+        this.portalLabel.setPosition(cc.p(666, 66));
+        this.portalLabel.setZOrder(1000);
+        this.addChild(this.portalLabel);
+        ha = this.portalLabel;
 
         this.player = new Player(this, "hero", Game.size.width / 2, Game.size.height / 2, null, 500);
 
         this.scheduleUpdate();
         this.schedule(this.update, 1);
 
-        for (var i = 1; i < 5; i++) {
+        for (var i = 0; i < 5; i++) {
             var sprite = cc.Sprite.createWithSpriteFrameName("portal_0" + i);
             sprite.setPosition(cc.p(Game.size.width / 2, Game.size.height / 2 - 10));
             sprite.setZOrder(100);
@@ -34,26 +47,28 @@ var Level = cc.LayerColor.extend({
         return true;
     },
 
-    update : function(dt) {
-        this.player.update();
-        if (this.portalSprite != null) {
-            this.portalSprite.removeFromParent();
+    update : function() {
+        if (this.state != "play") {
+            return;
         }
-        this.portalIndex += 0.3;
-        if (Math.round(this.portalIndex) >= this.portalSprites.length) {
-            this.portalIndex = 0;
-        }
-        this.portalSprite = this.portalSprites[Math.round(this.portalIndex)];
-        this.addChild(this.portalSprite);
 
-        var speed = this.playerSpeed;
+        var now = (new Date()).getTime();
+        if (this.last == null) {
+            this.last = now;
+        }
+        var dt = now - this.last;
+        this.last = now;
+
+        this.player.update();
+
+        var speed = this.player.speed;
         if (this.playerVector.x != 0 && this.playerVector.y != 0) {
             speed = speed / Math.sqrt(2);
         }
 
-        this.player.move(speed * this.playerVector.x, speed * this.playerVector.y);
+        this.player.move(speed * this.playerVector.x * dt / 1000, speed * this.playerVector.y * dt / 1000);
         for (var i = 0; i < this.enemies.length; i++) {
-            this.enemies[i].update(this);
+            this.enemies[i].update(this, dt);
         }
 
         var level = Game.levels[Game.level];
@@ -76,8 +91,8 @@ var Level = cc.LayerColor.extend({
             }
         }
 
-        var now = (new Date()).getTime();
-        if (this.player.hitTime + 1000 <= now) {
+        //hits
+        if (this.player.hitTime + this.player.reloadingTime <= now) {
             var enemiesToHit = [];
             for (var i = 0; i < this.enemies.length; i++) {
                 var enemy = this.enemies[i];
@@ -99,9 +114,40 @@ var Level = cc.LayerColor.extend({
             }
         }
 
+        //portal
+        this.portalState = "normal";
+        for (var i = 0; i < this.enemies.length; i++) {
+            var enemy = this.enemies[i];
+            if (Math.sqrt((enemy.x - Game.size.width / 2) * (enemy.x - Game.size.width / 2) + (enemy.y - Game.size.height / 2) * (enemy.y - Game.size.height / 2)) <= 10) {
+                this.portalTimer -= dt;
+                if (this.portalTimer < 0) {
+                    this.portalTimer = 0;
+                    this.state = "run_away";
+                }
+                this.portalState = "run_away";
+
+                this.portalLabel.setString(this.portalTimer == 0 ? 0 : ("" + this.portalTimer / 1000 + "0000000").substring(0, 5));
+                this.portalLabel.draw();
+                break;
+            }
+        }
+
+        if (this.portalSprite != null) {
+            this.portalSprite.removeFromParent();
+        }
+        this.portalIndex += 0.3;
+        if (Math.round(this.portalIndex) >= this.portalSprites.length) {
+            this.portalIndex = 1;
+        }
+        this.portalSprite = this.portalSprites[this.portalState == "normal" ? 0 : Math.round(this.portalIndex)];
+        this.addChild(this.portalSprite);
     },
 
     onKeyUp : function(e) {
+        if (this.state != "play") {
+            return;
+        }
+
         if(e === cc.KEY.left || e === cc.KEY.right || e === cc.KEY.a || e === cc.KEY.d) {
             this.playerVector.x = 0;
         }
@@ -114,17 +160,20 @@ var Level = cc.LayerColor.extend({
     onKeyDown : function(e) {
         if(e === cc.KEY.z) {
             ha.setPosition(ha.getPosition().x - 1, ha.getPosition().y);
+            console.log(ha.getPosition());
         }
         if(e === cc.KEY.x) {
             ha.setPosition(ha.getPosition().x + 1, ha.getPosition().y);
+            console.log(ha.getPosition());
         }
         if(e === cc.KEY.c) {
             ha.setPosition(ha.getPosition().x, ha.getPosition().y + 1);
+            console.log(ha.getPosition());
         }
         if(e === cc.KEY.v) {
             ha.setPosition(ha.getPosition().x, ha.getPosition().y - 1);
+            console.log(ha.getPosition());
         }
-        console.log(ha.getPosition());
 
         if(e === cc.KEY.left || e === cc.KEY.a) {
             this.playerVector.x = -1;
@@ -144,6 +193,10 @@ var Level = cc.LayerColor.extend({
     },
 
     onMouseMoved : function(e, pEvent) {
+        if (this.state != "play") {
+            return;
+        }
+
         this.player.onTouchMove(e._point);
     },
 
@@ -156,7 +209,7 @@ var Level = cc.LayerColor.extend({
         );
 
         //damage
-        enemy.damage(this.player.damage);
+        enemy.damage(this.player.damagePower);
     }
 });
 
@@ -168,3 +221,5 @@ Level.scene = cc.Scene.extend({
         this.addChild(layer);
     }
 });
+
+var ha;

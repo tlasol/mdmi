@@ -17,6 +17,7 @@ var s_FB = "res/fb.png";
 var s_Info = "res/info.png";
 var s_Health = "res/healthOrb.png";
 var s_Mana = "res/manaOrb.png";
+var s_Orbs = "res/orbs.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
@@ -46,6 +47,7 @@ var g_resources = [
     { src : s_Info },
     { src : s_Health },
     { src : s_Mana },
+    { src : s_Orbs },
 
     //plist
     { src : s_Hero_plist },
@@ -54,7 +56,7 @@ var g_resources = [
     { src : s_Aura_plist },
     { src : s_Catbug_plist },
     { src : s_Health_plist },
-    { src : s_Mana_plist }
+    { src : s_Mana_plist },
 
     //fnt
 
@@ -71,8 +73,8 @@ function initLevels() {
         {
             enemyProbability : 0.005,
             enemies : [
-                { count : 10, create : function(layer) { return new Catbug(layer, 1); } },
-                { count : 10, create : function(layer) { return new Poring(layer, 1); } }
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 10, create : function(layer) { return new Poring(layer, 80); } }
             ]
         }
     ]
