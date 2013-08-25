@@ -24,14 +24,18 @@ function SpriteObject(layer, name, x, y, size, zOrder) {
         if (this.onMove) {
             this.onMove();
         }
-        if (dx < 0) {
-            this.setActiveSprite("left");
-            return;
+
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx < 0) {
+                this.setActiveSprite("left");
+                return;
+            }
+            if (dx > 0) {
+                this.setActiveSprite("right");
+                return;
+            }
         }
-        if (dx > 0) {
-            this.setActiveSprite("right");
-            return;
-        }
+
         if (dy > 0) {
             this.setActiveSprite("top");
             return;

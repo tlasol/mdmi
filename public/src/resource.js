@@ -9,6 +9,9 @@ var s_Hero = "res/hero.png";
 var s_Poring = "res/poring.png";
 var s_Aura = "res/aura.png"
 var s_Catbug = "res/catbug.png"
+var s_AboutBackground = "res/aboutBackground.png";
+var s_Back = "res/backButton.png";
+var s_BackActive = "res/backButtonActive.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
@@ -28,6 +31,9 @@ var g_resources = [
     { src : s_Poring },
     { src : s_Aura },
     { src : s_Catbug },
+    { src : s_AboutBackground },
+    { src : s_Back },
+    { src : s_BackActive },
 
     //plist
     { src : s_Hero_plist },

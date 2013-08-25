@@ -101,29 +101,29 @@ var Level = cc.LayerColor.extend({
     },
 
     onKeyUp : function(e) {
-        if(e === cc.KEY.left || e === cc.KEY.right) {
+        if(e === cc.KEY.left || e === cc.KEY.right || e === cc.KEY.a || e === cc.KEY.d) {
             this.playerVector.x = 0;
         }
 
-        if(e === cc.KEY.up || e === cc.KEY.down) {
+        if(e === cc.KEY.up || e === cc.KEY.down || e === cc.KEY.w || e === cc.KEY.s) {
             this.playerVector.y = 0;
         }
     },
 
     onKeyDown : function(e) {
-        if(e === cc.KEY.left) {
+        if(e === cc.KEY.left || e === cc.KEY.a) {
             this.playerVector.x = -1;
         }
 
-        if(e === cc.KEY.right) {
+        if(e === cc.KEY.right || e === cc.KEY.d) {
             this.playerVector.x = 1;
         }
 
-        if(e === cc.KEY.down) {
+        if(e === cc.KEY.down || e === cc.KEY.s) {
             this.playerVector.y = -1;
         }
 
-        if(e === cc.KEY.up) {
+        if(e === cc.KEY.up  || e === cc.KEY.w) {
             this.playerVector.y = 1;
         }
     },

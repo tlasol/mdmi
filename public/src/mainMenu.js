@@ -1,6 +1,5 @@
 var MainMenu = cc.Layer.extend({
     init:function () {
-        var selfPointer = this;
         this._super();
 
         loadResources();
@@ -11,7 +10,7 @@ var MainMenu = cc.Layer.extend({
         var newGame = cc.MenuItemImage.create(s_Start, s_StartActive, function () { cc.Director.getInstance().replaceScene(new Level.scene()); }, this);
         newGame.setAnchorPoint(cc.p(0.5, 0.5));
 
-        var about = cc.MenuItemImage.create(s_About, s_AboutActive, function () { cc.Director.getInstance().replaceScene(new Level.scene()); }, this);
+        var about = cc.MenuItemImage.create(s_About, s_AboutActive, function () { cc.Director.getInstance().replaceScene(new About.scene()); }, this);
         about.setAnchorPoint(cc.p(0.5, 0.5));
         about.setPosition(cc.p(400, -190));
 
