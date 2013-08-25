@@ -7,210 +7,210 @@
             <key>catbug_bottom00</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_bottom01</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{100,100}}</string>
+                <string>{{50,0},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_bottom02</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,0},{100,100}}</string>
+                <string>{{100,0},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_bottom03</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,0},{100,100}}</string>
+                <string>{{150,0},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_left00</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,100},{100,100}}</string>
+                <string>{{0,48},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_left01</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,100},{100,100}}</string>
+                <string>{{50,48},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_left02</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,100},{100,100}}</string>
+                <string>{{100,48},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_left03</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,100},{100,100}}</string>
+                <string>{{150,48},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_right00</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,200},{100,100}}</string>
+                <string>{{0,96},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_right01</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,200},{100,100}}</string>
+                <string>{{50,96},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_right02</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,200},{100,100}}</string>
+                <string>{{100,96},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_right03</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,200},{100,100}}</string>
+                <string>{{150,96},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_top00</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,300},{100,100}}</string>
+                <string>{{0,144},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_top01</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,300},{100,100}}</string>
+                <string>{{50,144},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_top02</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,300},{100,100}}</string>
+                <string>{{100,144},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
             <key>catbug_top03</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,300},{100,100}}</string>
+                <string>{{150,144},{50,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{50,48}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{50,48}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -224,7 +224,7 @@
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:873706d2c1ad9f5b33d90eefda3a7084$</string>
             <key>textureFileName</key>
-            <string>catbug</string>
+            <string>hero</string>
         </dict>
     </dict>
 </plist>

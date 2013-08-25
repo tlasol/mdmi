@@ -1,5 +1,8 @@
 var s_MainMenu = "res/mainMenu.png";
 var s_Start = "res/startButton.png";
+var s_StartActive = "res/startButtonActive.png";
+var s_About = "res/aboutButton.png";
+var s_AboutActive = "res/aboutButtonActive.png";
 var s_LevelBackground = "res/levelBackground.png";
 var s_Portal = "res/portal.png";
 var s_Hero = "res/hero.png";
@@ -16,6 +19,9 @@ var s_Catbug_plist = "res/plists/catbug.plist";
 var g_resources = [
     { src : s_MainMenu },
     { src : s_Start },
+    { src : s_StartActive },
+    { src : s_About },
+    { src : s_AboutActive },
     { src : s_LevelBackground },
     { src : s_Portal },
     { src : s_Hero },

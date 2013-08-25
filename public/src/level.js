@@ -60,20 +60,43 @@ var Level = cc.LayerColor.extend({
             if (Game.levels.length == 0) {
                 return;
             }
-            var index = Math.round((Game.levels.length - 1) * Math.random());
+            var index = Math.round(Game.levels[Game.level].enemies.length * Math.random());
+            if (index >= Game.levels.length) {
+                index = Game.levels.length - 1;
+            }
             var enemyDescription = level.enemies[index];
             if (enemyDescription == null) {
                 return;
             }
             this.enemies.push(enemyDescription.create(this));
             enemyDescription.count--;
-            if (enemyDescription.count == 0) {
+            if (enemyDescription.count <= 0) {
                 level.enemies.splice(index, 1);
             }
         }
 
-        this.player.hitTimer -= dt;
-        var enemiesToHit = [];
+        var now = (new Date()).getTime();
+        if (this.player.hitTime + 1000 <= now) {
+            var enemiesToHit = [];
+            for (var i = 0; i < this.enemies.length; i++) {
+                var enemy = this.enemies[i];
+                if (Math.sqrt((enemy.x - this.player.x) * (enemy.x - this.player.x) + (enemy.y - this.player.y) * (enemy.y - this.player.y)) < this.player.damageZone) {
+                    var dAngle = Math.atan2(enemy.x - this.player.x, enemy.y - this.player.y) - this.player.angle;
+                    if (dAngle < 0) {
+                        dAngle = -dAngle;
+                    }
+                    if (dAngle * (180 / Math.PI) <= this.player.damageAngle / 2) {
+                        enemiesToHit.push(enemy);
+                    }
+                }
+            }
+            if (enemiesToHit.length > 0) {
+                this.player.hitTime = now;
+                for (var i = 0; i < enemiesToHit.length; i++) {
+                    this.hit(enemiesToHit[i]);
+                }
+            }
+        }
 
     },
 
@@ -107,6 +130,18 @@ var Level = cc.LayerColor.extend({
 
     onMouseMoved : function(e, pEvent) {
         this.player.onTouchMove(e._point);
+    },
+
+    hit : function(enemy) {
+        //knock out
+        var r = Math.sqrt((enemy.x - this.player.x) * (enemy.x - this.player.x) + (enemy.y - this.player.y) * (enemy.y - this.player.y));
+        enemy.move(
+            (enemy.x - this.player.x) * this.player.knockOut / r,
+            (enemy.y - this.player.y) * this.player.knockOut / r
+        );
+
+        //damage
+        enemy.damage(this.player.damage);
     }
 });
 

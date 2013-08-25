@@ -153,7 +153,8 @@ function Player(layer, name, x, y, size, zOrder) {
     this.damage = 1;
     this.damageZone = 75;
     this.damageAngle = 45;
-    this.hitTimer = 0;
+    this.hitTime = new Date().getTime();
+    this.knockOut = 50;
     this.reloadingTime = 1000;
 
     this.aura = cc.Sprite.createWithSpriteFrameName("aura_" + this.damageAngle);
