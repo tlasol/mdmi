@@ -13,7 +13,7 @@ function SpriteObject(layer, name, x, y, size, zOrder) {
         _y += dy;
         if (_x < 20) { _x = 20; }
         if (_x > Game.size.width - 20) { _x = Game.size.width - 20; }
-        if (_y < 25) { _y = 25; }
+        if (_y < 145) { _y = 145; }
         if (_y > Game.size.height - 25) { _y = Game.size.height - 25; }
         _spriteIndex += 0.1;
 
