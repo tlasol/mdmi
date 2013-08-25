@@ -15,12 +15,16 @@ var s_BackActive = "res/backButtonActive.png";
 var s_Twitter = "res/twitter.png";
 var s_FB = "res/fb.png";
 var s_Info = "res/info.png";
+var s_Health = "res/healthOrb.png";
+var s_Mana = "res/manaOrb.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
 var s_Portal_plist = "res/plists/portal.plist";
 var s_Aura_plist = "res/plists/aura.plist";
 var s_Catbug_plist = "res/plists/catbug.plist";
+var s_Health_plist = "res/plists/healthOrb.plist";
+var s_Mana_plist = "res/plists/manaOrb.plist";
 
 var g_resources = [
     { src : s_MainMenu },
@@ -40,13 +44,17 @@ var g_resources = [
     { src : s_Twitter },
     { src : s_FB },
     { src : s_Info },
+    { src : s_Health },
+    { src : s_Mana },
 
     //plist
     { src : s_Hero_plist },
     { src : s_Poring_plist },
     { src : s_Portal_plist },
     { src : s_Aura_plist },
-    { src : s_Catbug_plist }
+    { src : s_Catbug_plist },
+    { src : s_Health_plist },
+    { src : s_Mana_plist }
 
     //fnt
 
@@ -79,4 +87,6 @@ function loadResources() {
     cache.addSpriteFrames(s_Portal_plist, s_Portal);
     cache.addSpriteFrames(s_Aura_plist, s_Aura);
     cache.addSpriteFrames(s_Catbug_plist, s_Catbug);
+    cache.addSpriteFrames(s_Health_plist, s_Health);
+    cache.addSpriteFrames(s_Mana_plist, s_Mana);
 }

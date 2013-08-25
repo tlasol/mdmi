@@ -17,9 +17,7 @@ var myApp = new (cc.Application.extend({
         var director = cc.Director.getInstance();
         director.setDisplayStats(this.config['showFPS']);
         director.setAnimationInterval(1.0 / this.config['frameRate']);
-        cc.LoaderScene.preload(g_resources, function () {
-            director.replaceScene(new this.startScene());
-        }, this);
+        cc.LoaderScene.preload(g_resources, function () { director.replaceScene(new this.startScene()); }, this);
 
         return true;
     }

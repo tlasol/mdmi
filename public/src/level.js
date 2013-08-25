@@ -35,6 +35,7 @@ var Level = cc.LayerColor.extend({
     },
 
     update : function(dt) {
+        this.player.update();
         if (this.portalSprite != null) {
             this.portalSprite.removeFromParent();
         }
@@ -111,6 +112,20 @@ var Level = cc.LayerColor.extend({
     },
 
     onKeyDown : function(e) {
+        if(e === cc.KEY.z) {
+            ha.setPosition(ha.getPosition().x - 1, ha.getPosition().y);
+        }
+        if(e === cc.KEY.x) {
+            ha.setPosition(ha.getPosition().x + 1, ha.getPosition().y);
+        }
+        if(e === cc.KEY.c) {
+            ha.setPosition(ha.getPosition().x, ha.getPosition().y + 1);
+        }
+        if(e === cc.KEY.v) {
+            ha.setPosition(ha.getPosition().x, ha.getPosition().y - 1);
+        }
+        console.log(ha.getPosition());
+
         if(e === cc.KEY.left || e === cc.KEY.a) {
             this.playerVector.x = -1;
         }

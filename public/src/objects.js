@@ -154,6 +154,7 @@ function Player(layer, name, x, y, size, zOrder) {
     Player.superclass.call(this, layer, name, x, y, size, zOrder);
 
     this.hp = 6;
+    this.mana = 6;
     this.damage = 1;
     this.damageZone = 75;
     this.damageAngle = 45;
@@ -169,6 +170,9 @@ function Player(layer, name, x, y, size, zOrder) {
     this.aura.setZOrder(zOrder - 1);
     this.angle = 0;
 
+    this.old_hp = null;
+    this.old_mana = null;
+
     layer.addChild(this.aura);
 
     this.onMove = function() {
@@ -178,6 +182,31 @@ function Player(layer, name, x, y, size, zOrder) {
         this.angle = Math.atan2(e.x - this.x, e.y - this.y);
         this.aura.setRotation(this.angle * (180 / Math.PI));
     };
+    this.update = function() {
+        if (this.old_hp != this.hp) {
+            if (this.hp_sprite != null) {
+                this.hp_sprite.removeFromParent();
+            }
+
+            this.hp_sprite = cc.Sprite.createWithSpriteFrameName("health_" + this.hp);
+            this.hp_sprite.setPosition(79, 83);
+            layer.addChild(this.hp_sprite);
+            this.old_hp = this.hp;
+        }
+
+        if (this.old_mana != this.mana) {
+            if (this.mana_sprite != null) {
+                this.mana_sprite.removeFromParent();
+            }
+
+            this.mana_sprite = cc.Sprite.createWithSpriteFrameName("mana_" + this.mana);
+            this.mana_sprite.setPosition(798, 83);
+            layer.addChild(this.mana_sprite);
+            this.old_mana = this.mana;
+            ha = this.mana_sprite;
+        }
+    }
 }
 
 Object.inheritance(Player, SpriteObject);
+var ha;
