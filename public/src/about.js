@@ -21,9 +21,9 @@ var About = cc.Layer.extend({
         menu.addChild(info);
 
         addInfo(menu, 257, 480, "https://twitter.com/CastalianOrder", "https://www.facebook.com/ivan.ponomarev.89", true);
-        addInfo(menu, 270, 335, "https://twitter.com/AshamGalkinberg", "https://www.facebook.com/maria.galkina.313", true);
-        addInfo(menu, 235, 220, "https://twitter.com/dbalakov", "https://www.facebook.com/dbalakov", true);
-        addInfo(menu, 275, 90, "https://twitter.com/tlasol", "https://www.facebook.com/mariya.galiulina", true);
+        addInfo(menu, 264, 336, "https://twitter.com/AshamGalkinberg", "https://www.facebook.com/maria.galkina.313", true);
+        addInfo(menu, 238, 220, "https://twitter.com/dbalakov", "https://www.facebook.com/dbalakov", true);
+        addInfo(menu, 271, 89, "https://twitter.com/tlasol", "https://www.facebook.com/mariya.galiulina", true);
 
         this.addChild(menu);
     }
