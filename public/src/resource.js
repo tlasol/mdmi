@@ -5,10 +5,12 @@ var s_LevelBackground = "res/levelBackground.png";
 var s_Portal = "res/portal.png";
 var s_Hero = "res/hero.png";
 var s_Poring = "res/poring.png";
+var s_Aura = "res/aura.png"
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
 var s_Portal_plist = "res/plists/portal.plist";
+var s_Aura_plist = "res/plists/aura.plist";
 
 var g_resources = [
     { src : s_MainMenu },
@@ -18,11 +20,13 @@ var g_resources = [
     { src : s_Portal },
     { src : s_Hero },
     { src : s_Poring },
+    { src : s_Aura },
 
     //plist
     { src : s_Hero_plist },
     { src : s_Poring_plist },
-    { src : s_Portal_plist }
+    { src : s_Portal_plist },
+    { src : s_Aura_plist }
 
     //fnt
 
@@ -51,4 +55,5 @@ function loadResources() {
     cache.addSpriteFrames(s_Hero_plist, s_Hero);
     cache.addSpriteFrames(s_Poring_plist, s_Poring);
     cache.addSpriteFrames(s_Portal_plist, s_Portal);
+    cache.addSpriteFrames(s_Aura_plist, s_Aura);
 }

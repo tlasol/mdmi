@@ -38,7 +38,6 @@ function SpriteObject(layer, name, x, y, size, zOrder) {
         }
         if (dy < 0) {
             this.setActiveSprite("bottom");
-            return;
         }
     };
 
@@ -73,13 +72,19 @@ function SpriteObject(layer, name, x, y, size, zOrder) {
         _sprites[positionName] = sprites;
     }
 
+    this.removeFromLayer = function() {
+        if (_activeSprite != null) {
+            _activeSprite.removeFromParent();
+        }
+    };
+
     this.setActiveSprite("bottom");
 }
 
 SpriteObject.POSITIONS = [ "bottom", "left", "top", "right" ];
 SpriteObject.DEFAULT_SIZE = 4;
 
-function Enemy(layer, name, update, size) {
+function Enemy(layer, name, update, size, hp) {
     var position = (function() {
         var r = Math.random();
         if (r < 0.25) {
@@ -96,6 +101,16 @@ function Enemy(layer, name, update, size) {
     Enemy.superclass.call(this, layer, name, position.x, position.y, size, 400);
     this.move(0, 0);
     this.update = update;
+    this.hp = hp;
+
+    this.damage = function(damage) {
+        this.hp -= damage;
+        if (this.hp <= 0) {
+            var index = layer.enemies.indexOf(this);
+            layer.enemies.splice(index, 1);
+            this.removeFromLayer();
+        }
+    };
 }
 Object.inheritance(Enemy, SpriteObject);
 
@@ -110,7 +125,7 @@ function Poring(layer, speed, size) {
         dx = dx * speed / l;
         dy = dy * speed / l;
         this.move(dx, dy);
-    }, size);
+    }, size, 3);
 }
 
 Object.inheritance(Poring, Enemy);
@@ -118,9 +133,16 @@ Object.inheritance(Poring, Enemy);
 function Player(layer, name, x, y, size, zOrder) {
     Player.superclass.call(this, layer, name, x, y, size, zOrder);
 
-    this.aura = cc.Sprite.create(s_Poring);
+    this.hp = 6;
+    this.damage = 1;
+    this.damageZone = 75;
+    this.damageAngle = 45;
+    this.hitTimer = 0;
+    this.reloadingTime = 1000;
+
+    this.aura = cc.Sprite.createWithSpriteFrameName("aura_" + this.damageAngle);
     this.aura.setPosition(x, y);
-    this.aura.setScaleX(2);
+    this.aura.setScale(this.damageZone / 100);
 
     this.aura.setOpacity(150);
     this.aura.setZOrder(zOrder - 1);
@@ -132,8 +154,7 @@ function Player(layer, name, x, y, size, zOrder) {
         this.aura.setPosition(this.x, this.y);
     };
     this.onTouchMove = function(e) {
-        var angle = Math.atan2(e.x - this.x, e.y - this.y);
-        this.angle = angle;
+        this.angle = Math.atan2(e.x - this.x, e.y - this.y);
         this.aura.setRotation(this.angle * (180 / Math.PI));
     };
 }

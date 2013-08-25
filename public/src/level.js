@@ -30,10 +30,11 @@ var Level = cc.LayerColor.extend({
             sprite.setZOrder(100);
             this.portalSprites.push(sprite);
         }
+
         return true;
     },
 
-    update : function() {
+    update : function(dt) {
         if (this.portalSprite != null) {
             this.portalSprite.removeFromParent();
         }
@@ -70,6 +71,10 @@ var Level = cc.LayerColor.extend({
                 level.enemies.splice(index, 1);
             }
         }
+
+        this.player.hitTimer -= dt;
+        var enemiesToHit = [];
+
     },
 
     onKeyUp : function(e) {
