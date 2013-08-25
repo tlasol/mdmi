@@ -8,6 +8,7 @@ var s_Poring = "res/poring.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
+var s_Portal_plist = "res/plists/portal.plist";
 
 var g_resources = [
     { src : s_MainMenu },
@@ -20,7 +21,8 @@ var g_resources = [
 
     //plist
     { src : s_Hero_plist },
-    { src : s_Poring_plist }
+    { src : s_Poring_plist },
+    { src : s_Portal_plist }
 
     //fnt
 
@@ -31,13 +33,22 @@ var g_resources = [
     //effect
 ];
 
-var Game = {
-    size : { width : 1024, height : 576  },
-    level : { enemyProbability : 0.05 }
-};
+var Game = { size : { width : 1024, height : 576  }, level : 0 };
+function initLevels() {
+    Game.levels = [
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                { count : 10, create : function(layer) { return new Poring(layer, 1); } }
+            ]
+        }
+    ]
+}
+initLevels();
 
 function loadResources() {
     var cache = cc.SpriteFrameCache.getInstance();
     cache.addSpriteFrames(s_Hero_plist, s_Hero);
     cache.addSpriteFrames(s_Poring_plist, s_Poring);
+    cache.addSpriteFrames(s_Portal_plist, s_Portal);
 }

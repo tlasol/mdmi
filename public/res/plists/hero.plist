@@ -7,210 +7,210 @@
             <key>hero_bottom00</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_bottom01</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,0},{50,48}}</string>
+                <string>{{32,0},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_bottom02</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{50,48}}</string>
+                <string>{{64,0},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_bottom03</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,0},{50,48}}</string>
+                <string>{{96,0},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_left00</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,48},{50,48}}</string>
+                <string>{{0,48},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_left01</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,48},{50,48}}</string>
+                <string>{{32,48},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_left02</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,48},{50,48}}</string>
+                <string>{{64,48},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_left03</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,48},{50,48}}</string>
+                <string>{{96,48},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_right00</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,96},{50,48}}</string>
+                <string>{{0,96},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_right01</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,96},{50,48}}</string>
+                <string>{{32,96},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_right02</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,96},{50,48}}</string>
+                <string>{{64,96},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_right03</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,96},{50,48}}</string>
+                <string>{{96,96},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_top00</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,144},{50,48}}</string>
+                <string>{{0,144},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_top01</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,144},{50,48}}</string>
+                <string>{{32,144},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_top02</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,144},{50,48}}</string>
+                <string>{{64,144},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
             <key>hero_top03</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,144},{50,48}}</string>
+                <string>{{96,144},{32,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,48}}</string>
+                <string>{{0,0},{32,48}}</string>
                 <key>sourceSize</key>
-                <string>{50,48}</string>
+                <string>{32,48}</string>
             </dict>
         </dict>
         <key>metadata</key>
