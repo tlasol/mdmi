@@ -12,6 +12,9 @@ var s_Catbug = "res/catbug.png"
 var s_AboutBackground = "res/aboutBackground.png";
 var s_Back = "res/backButton.png";
 var s_BackActive = "res/backButtonActive.png";
+var s_Twitter = "res/twitter.png";
+var s_FB = "res/fb.png";
+var s_Info = "res/info.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
@@ -34,6 +37,9 @@ var g_resources = [
     { src : s_AboutBackground },
     { src : s_Back },
     { src : s_BackActive },
+    { src : s_Twitter },
+    { src : s_FB },
+    { src : s_Info },
 
     //plist
     { src : s_Hero_plist },
