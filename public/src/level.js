@@ -2,6 +2,9 @@ var Level = cc.LayerColor.extend({
     portalSprites : [],
     portalSprite : null,
     mouse : { x : 0, y : 0 },
+    skill_0_Sprite : null,
+    skill_1_Sprite : null,
+    skill_2_Sprite : null,
 
     start : function() {
         initLevels();
@@ -30,6 +33,24 @@ var Level = cc.LayerColor.extend({
 
         this.portalLabel.setString(this.portalTimer == 0 ? 0 : ("" + this.portalTimer / 1000 + "0000000").substring(0, 5));
         this.portalLabel.draw();
+
+        if (this.skill_0_Sprite != null) {
+            this.skill_0_Sprite.removeFromParent();
+        }
+        if (this.skill_1_Sprite != null) {
+            this.skill_1_Sprite.removeFromParent();
+        }
+        if (this.skill_2_Sprite != null) {
+            this.skill_2_Sprite.removeFromParent();
+        }
+
+        if (this.player.skills[0] != null) {
+            this.skill_0_Sprite = cc.Sprite.create(this.player.skills[0].icon);
+            this.skill_0_Sprite.setPosition(cc.p(179, 63));
+            this.skill_0_Sprite.setZOrder(500);
+            this.addChild(this.skill_0_Sprite);
+            ha = this.skill_0_Sprite;
+        }
 
         this.initDialogue();
     },
@@ -99,6 +120,9 @@ var Level = cc.LayerColor.extend({
             speed = speed / Math.sqrt(2);
         }
 
+        if (this.player.skills["0"] != null && this.player.skills["0"].active) {
+            this.player.skills["0"].update(this, dt);
+        }
         this.player.move(speed * this.playerVector.x * dt / 1000, speed * this.playerVector.y * dt / 1000);
     },
 
@@ -193,6 +217,10 @@ var Level = cc.LayerColor.extend({
         if (this.state != "play") {
             return;
         }
+        if (e == 49 && this.player.skills[0] != null) {
+            this.player.skills[0].activate(this);
+        }
+
 
         if(e === cc.KEY.left || e === cc.KEY.right || e === cc.KEY.a || e === cc.KEY.d) {
             this.playerVector.x = 0;

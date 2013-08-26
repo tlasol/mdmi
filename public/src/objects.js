@@ -184,6 +184,7 @@ function Player(layer, name, x, y, size, zOrder) {
 
     this.old_hp = null;
     this.old_mana = null;
+    this.skills = { '0' : Rush };
 
     layer.addChild(this.aura);
 
