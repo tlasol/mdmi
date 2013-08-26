@@ -78,10 +78,13 @@ var g_resources = [
 ];
 
 var dialogues = {
-    '0' : [
-        { x : 550, y : 400 },
-        { x : 500, y : 300 },
-        { x : 550, y : 400 } ],
+    '0' : [ { x : 550, y : 400 }, { x : 500, y : 300 }, { x : 550, y : 400 } ],
+    '1' : [ { x : 550, y : 400 }, { x : 500, y : 300 } ],
+    '2' : [ { x : 550, y : 400 }, { x : 500, y : 300 } ],
+    '4' : [ { x : 550, y : 400 }, { x : 500, y : 300 } ],
+    '7' : [ { x : 550, y : 400 }, { x : 500, y : 300 }, { x : 550, y : 400 } ],
+    '8' : [ { x : 550, y : 400 }, { x : 500, y : 300 } ],
+    '9' : [ { x : 550, y : 400 }, { x : 500, y : 300 }, { x : 550, y : 400 }, { x : 500, y : 300 }, { x : 550, y : 400 } ],
 
     length : 1,
     getDialogueSource : function(level, index) {
@@ -98,6 +101,69 @@ for (var i = 0; i < dialogues.length; i++) {
 var Game = { size : { width : 1024, height : 576  }, level : 0 };
 function initLevels() {
     Game.levels = [
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 1, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 2, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 3, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 4, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 5, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 6, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 7, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 8, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
+        {
+            enemyProbability : 0.005,
+            enemies : [
+                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
+                { count : 9, create : function(layer) { return new Poring(layer, 80); } }
+            ]
+        },
         {
             enemyProbability : 0.005,
             enemies : [
