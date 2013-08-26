@@ -107,10 +107,18 @@ var Level = cc.LayerColor.extend({
         }
 
         var level = Game.levels[Game.level];
-        if (Math.random() < level.enemyProbability || this.enemies.length == 0) {
-            if (Game.levels.length == 0) {
+        if (this.enemies.length == 0) {
+            if (level.enemies.length == 0) {
+                Game.level++;
+                this.start();
                 return;
             }
+        }
+        if (Math.random() < level.enemyProbability || this.enemies.length == 0) {
+            if (level.enemies.length == 0) {
+                return;
+            }
+
             var index = Math.round(Game.levels[Game.level].enemies.length * Math.random());
             if (index >= Game.levels.length) {
                 index = Game.levels.length - 1;
@@ -282,8 +290,6 @@ var Level = cc.LayerColor.extend({
         this.dialogueSprite.setPosition(cc.p(thatDialogue.x, thatDialogue.y));
         this.dialogueSprite.setZOrder(20000);
         this.addChild(this.dialogueSprite);
-
-        console.log(thatDialogue);
     }
 });
 
