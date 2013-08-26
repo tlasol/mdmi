@@ -66,7 +66,7 @@ var g_resources = [
     { src : s_Aura_plist },
     { src : s_Catbug_plist },
     { src : s_Health_plist },
-    { src : s_Mana_plist },
+    { src : s_Mana_plist }
 
     //fnt
 
@@ -78,13 +78,22 @@ var g_resources = [
 ];
 
 var dialogues = {
-    '1' : 3,
+    '0' : [
+        { x : 550, y : 400 },
+        { x : 500, y : 300 },
+        { x : 550, y : 400 } ],
 
     length : 1,
     getDialogueSource : function(level, index) {
         return "res/dialogues/" + level + "/" + index + ".png"
     }
 };
+
+for (var i = 0; i < dialogues.length; i++) {
+    for (var index = 0; index < dialogues[i].length; index++) {
+        g_resources.push({ src : dialogues.getDialogueSource(i, index) });
+    }
+}
 
 var Game = { size : { width : 1024, height : 576  }, level : 0 };
 function initLevels() {

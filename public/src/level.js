@@ -14,7 +14,8 @@ var Level = cc.LayerColor.extend({
         }
 
         this.portalIndex = 0;
-        this.state = "play";
+        this.state = "dialogue";
+        this.dialogue = 0;
 
         this.playerVector = { x : 0, y : 0 };
         this.enemies = [];
@@ -28,6 +29,8 @@ var Level = cc.LayerColor.extend({
 
         this.portalLabel.setString(this.portalTimer == 0 ? 0 : ("" + this.portalTimer / 1000 + "0000000").substring(0, 5));
         this.portalLabel.draw();
+
+        this.initDialogue();
     },
 
     init:function () {
@@ -66,9 +69,11 @@ var Level = cc.LayerColor.extend({
 
     update : function() {
         if (this.state != "play") {
-            if (this.gameOver == null) {
-                this.gameOver = GameOver.instance;
-                this.gameOver.init(this);
+            if (this.state != "dialogue") {
+                if (this.gameOver == null) {
+                    this.gameOver = GameOver.instance;
+                    this.gameOver.init(this);
+                }
             }
             return;
         }
@@ -190,6 +195,11 @@ var Level = cc.LayerColor.extend({
     },
 
     onKeyDown : function(e) {
+        if (this.state == "dialogue") {
+            this.dialogue++;
+            this.initDialogue();
+        }
+
         if(e === cc.KEY.z) {
             ha.setPosition(ha.getPosition().x - 1, ha.getPosition().y);
             console.log(ha.getPosition());
@@ -232,6 +242,13 @@ var Level = cc.LayerColor.extend({
         this.player.onTouchMove(e._point);
     },
 
+    onMouseDown : function() {
+        if (this.state == "dialogue") {
+            this.dialogue++;
+            this.initDialogue();
+        }
+    },
+
     hit : function(enemy) {
         //knock out
         var r = Math.sqrt((enemy.x - this.player.x) * (enemy.x - this.player.x) + (enemy.y - this.player.y) * (enemy.y - this.player.y));
@@ -242,6 +259,31 @@ var Level = cc.LayerColor.extend({
 
         //damage
         enemy.damage(this.player.damagePower);
+    },
+
+    initDialogue : function() {
+        if (this.dialogueSprite != null) {
+            this.dialogueSprite.removeFromParent();
+        }
+
+        var levelDialogues = dialogues[Game.level];
+        if (levelDialogues == null) {
+            this.state = "play";
+            return;
+        }
+
+        var thatDialogue = levelDialogues[this.dialogue];
+        if (thatDialogue == null) {
+            this.state = "play";
+            return;
+        }
+
+        this.dialogueSprite = cc.Sprite.create(dialogues.getDialogueSource(Game.level, this.dialogue));
+        this.dialogueSprite.setPosition(cc.p(thatDialogue.x, thatDialogue.y));
+        this.dialogueSprite.setZOrder(20000);
+        this.addChild(this.dialogueSprite);
+
+        console.log(thatDialogue);
     }
 });
 
