@@ -1,6 +1,7 @@
 var Level = cc.LayerColor.extend({
     portalSprites : [],
     portalSprite : null,
+    mouse : { x : 0, y : 0 },
 
     start : function() {
         initLevels();
@@ -203,11 +204,6 @@ var Level = cc.LayerColor.extend({
     },
 
     onKeyDown : function(e) {
-        if (this.state == "dialogue") {
-            this.dialogue++;
-            this.initDialogue();
-        }
-
         if(e === cc.KEY.z) {
             ha.setPosition(ha.getPosition().x - 1, ha.getPosition().y);
             console.log(ha.getPosition());
@@ -223,6 +219,10 @@ var Level = cc.LayerColor.extend({
         if(e === cc.KEY.v) {
             ha.setPosition(ha.getPosition().x, ha.getPosition().y - 1);
             console.log(ha.getPosition());
+        }
+
+        if (this.state != "play") {
+            return;
         }
 
         if(e === cc.KEY.left || e === cc.KEY.a) {
@@ -247,6 +247,7 @@ var Level = cc.LayerColor.extend({
             return;
         }
 
+        this.mouse = e._point;
         this.player.onTouchMove(e._point);
     },
 
