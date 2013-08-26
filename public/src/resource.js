@@ -26,6 +26,11 @@ var s_TryAgainButtonActive = "res/tryAgainButtonActive.png";
 var s_RushIcon = "res/skills/rush.png";
 var s_BerserkIcon = "res/skills/berserk.png";
 var s_berserkEffect = "res/skills/berserkEffect.png";
+var s_Mint = "res/mint.png";
+var s_Nudist = "res/nudist.png";
+var s_Poporing = "res/poporing.png";
+var s_LightIcon = "res/skills/light.png";
+var s_LightEffect = "res/skills/lightEffect.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
@@ -35,6 +40,9 @@ var s_Catbug_plist = "res/plists/catbug.plist";
 var s_Health_plist = "res/plists/healthOrb.plist";
 var s_Mana_plist = "res/plists/manaOrb.plist";
 var s_berserkEffect_plist = "res/plists/berserkEffect.plist";
+var s_Mint_plist = "res/plists/mint.plist";
+var s_Nudist_plist = "res/plists/nudist.plist";
+var s_Poporing_plist = "res/plists/poporing.plist";
 
 var g_resources = [
     { src : s_MainMenu },
@@ -65,6 +73,11 @@ var g_resources = [
     { src : s_RushIcon },
     { src : s_BerserkIcon },
     { src : s_berserkEffect },
+    { src : s_Mint },
+    { src : s_Nudist },
+    { src : s_Poporing },
+    { src : s_LightIcon },
+    { src : s_LightEffect },
 
     //plist
     { src : s_Hero_plist },
@@ -74,7 +87,10 @@ var g_resources = [
     { src : s_Catbug_plist },
     { src : s_Health_plist },
     { src : s_Mana_plist },
-    { src : s_berserkEffect_plist }
+    { src : s_berserkEffect_plist },
+    { src : s_Mint_plist },
+    { src : s_Nudist_plist },
+    { src : s_Poporing_plist }
 
     //fnt
 
@@ -138,4 +154,8 @@ function loadResources() {
     cache.addSpriteFrames(s_Health_plist, s_Health);
     cache.addSpriteFrames(s_Mana_plist, s_Mana);
     cache.addSpriteFrames(s_berserkEffect_plist, s_berserkEffect);
+
+    cache.addSpriteFrames(s_Mint_plist, s_Mint);
+    cache.addSpriteFrames(s_Nudist_plist, s_Nudist);
+    cache.addSpriteFrames(s_Poporing_plist, s_Poporing);
 }

@@ -59,12 +59,12 @@ var Level = cc.LayerColor.extend({
 
         if (this.player.skills[2] != null) {
             this.skill_2_Sprite = cc.Sprite.create(this.player.skills[2].icon);
-            this.skill_2_Sprite.setPosition(cc.p(318, 63));
+            this.skill_2_Sprite.setPosition(cc.p(322, 63));
             this.skill_2_Sprite.setZOrder(500);
             this.addChild(this.skill_2_Sprite);
         }
 
-        ha = this.skill_1_Sprite;
+        ha = this.skill_2_Sprite;
 
         this.initDialogue();
     },
@@ -127,7 +127,7 @@ var Level = cc.LayerColor.extend({
     },
 
     updatePlayer : function(now, dt) {
-        this.player.update();
+        this.player.update(dt);
         var speed = this.player.speed;
         if (this.playerVector.x != 0 && this.playerVector.y != 0) {
             speed = speed / Math.sqrt(2);

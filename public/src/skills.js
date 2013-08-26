@@ -1,5 +1,6 @@
 var Rush = createSkill({
     icon : s_RushIcon,
+    mana : 1,
     time : 500,
     speed : 0.8,
     splash : 50,
@@ -45,6 +46,7 @@ var Rush = createSkill({
 
 var Berserk = createSkill({
     icon : s_BerserkIcon,
+    mana : 1,
     time : 5000,
     playerDamage : 0,
     playerSpeed : 0,
@@ -74,7 +76,6 @@ var Berserk = createSkill({
             this.spriteTime = 0;
             if (this.activeSprite != null) {
                 this.activeSprite.removeFromParent();
-                console.log("remove");
             }
             this.spriteIndex++;
             if (this.spriteIndex >= this.sprites.length) {
@@ -83,7 +84,6 @@ var Berserk = createSkill({
             this.activeSprite = this.sprites[this.spriteIndex];
             this.activeSprite.setZOrder(501);
             layer.addChild(this.activeSprite);
-            console.log("add", this.spriteIndex);
         }
 
         if (this.activeSprite != null) {
@@ -102,8 +102,26 @@ var Berserk = createSkill({
 });
 
 var Light = createSkill({
-    icon : "",
-    time : 100
+    icon : s_LightIcon,
+    mana : 1,
+    time : 1000,
+
+    activateInternal : function(layer) {
+        var angle = Math.atan2(layer.mouse.x - layer.player.x, layer.mouse.y - layer.player.y);
+        this.sprite = cc.Sprite.create(s_LightEffect);
+        this.sprite.setPosition(layer.player.x, layer.player.y);
+        this.sprite.setOpacity(150);
+        this.sprite.setRotation(angle * (180 / Math.PI));
+        this.sprite.setZOrder(503);
+        layer.addChild(this.sprite);
+
+    },
+
+    updateInternal : function(layer, dt) { },
+
+    deactivate : function(layer) {
+        this.sprite.removeFromParent();
+    }
 });
 
 function createSkill(skill) {
@@ -112,6 +130,10 @@ function createSkill(skill) {
     result.timer = 0;
 
     result.activate = function(layer) {
+        if (layer.player.mana < this.mana) {
+            return;
+        }
+        layer.player.mana -= this.mana;
         this.active = true;
         this.timer = this.time;
         this.activateInternal(layer);

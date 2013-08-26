@@ -166,6 +166,7 @@ function Player(layer, name, x, y, size, zOrder) {
     this.maxHp = 6;
     this.mana = 6;
     this.maxMana = 6;
+    this.manaTimer = 0;
     this.damagePower = 3;
     this.damageZone = 75;
     this.damageAngle = 45;
@@ -184,7 +185,7 @@ function Player(layer, name, x, y, size, zOrder) {
 
     this.old_hp = null;
     this.old_mana = null;
-    this.skills = { '0' : Rush, '1' : Berserk, '2' : Berserk };
+    this.skills = { '0' : Rush, '1' : Berserk, '2' : Light };
 
     layer.addChild(this.aura);
 
@@ -195,7 +196,7 @@ function Player(layer, name, x, y, size, zOrder) {
         this.angle = Math.atan2(e.x - this.x, e.y - this.y);
         this.aura.setRotation(this.angle * (180 / Math.PI));
     };
-    this.update = function() {
+    this.update = function(dt) {
         if (this.old_hp != this.hp) {
             if (this.hp_sprite != null) {
                 this.hp_sprite.removeFromParent();
@@ -221,6 +222,14 @@ function Player(layer, name, x, y, size, zOrder) {
                 this.mana_sprite.setPosition(798, 83);
                 layer.addChild(this.mana_sprite);
                 this.old_mana = this.mana;
+            }
+        }
+
+        if (this.mana != this.maxMana) {
+            this.manaTimer += dt;
+            if (this.manaTimer >= 10000) {
+                this.mana++;
+                this.manaTimer = 0;
             }
         }
     };
