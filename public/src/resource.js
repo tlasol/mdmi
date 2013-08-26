@@ -23,6 +23,7 @@ var s_MainMenuButton = "res/mainMenuButton.png";
 var s_MainMenuButtonActive = "res/mainMenuButtonActive.png";
 var s_TryAgainButton = "res/tryAgainButton.png";
 var s_TryAgainButtonActive = "res/tryAgainButtonActive.png";
+var s_RushIcon = "res/skills/rush.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
