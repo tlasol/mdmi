@@ -16,7 +16,8 @@
             'src/level.js',
             'src/utils.js',
             'src/objects.js',
-            'src/about.js'
+            'src/about.js',
+            "src/gameOver.js"
         ]
     };
 

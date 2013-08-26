@@ -163,7 +163,9 @@ function Player(layer, name, x, y, size, zOrder) {
     Player.superclass.call(this, layer, name, x, y, size, zOrder);
 
     this.hp = 6;
+    this.maxHp = 6;
     this.mana = 6;
+    this.maxMana = 6;
     this.damagePower = 1;
     this.damageZone = 75;
     this.damageAngle = 45;

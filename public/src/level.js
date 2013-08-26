@@ -1,17 +1,26 @@
 var Level = cc.LayerColor.extend({
-    portalIndex : 0,
     portalSprites : [],
     portalSprite : null,
-    state : "play",
 
-    playerVector : { x : 0, y : 0 },
-    enemies : [],
-    portalTimer : 10000,
-    portalState : "normal",
-    last : null,
+    start : function() {
+        initLevels();
+
+        console.log("!!!");
+        this.portalIndex = 0;
+        this.state = "play";
+
+        this.playerVector = { x : 0, y : 0 };
+        this.enemies = [];
+        this.portalTimer = 1000;
+        this.portalState = "normal";
+        this.last = null;
+
+        this.update();
+    },
 
     init:function () {
         this._super();
+        console.log();
 
         var background = cc.Sprite.create(s_LevelBackground);
         background.setPosition(cc.p(Game.size.width / 2, Game.size.height / 2));
@@ -49,6 +58,10 @@ var Level = cc.LayerColor.extend({
 
     update : function() {
         if (this.state != "play") {
+            if (this.gameOver == null) {
+                this.gameOver = GameOver.instance;
+                this.gameOver.init(this);
+            }
             return;
         }
 
@@ -59,14 +72,23 @@ var Level = cc.LayerColor.extend({
         var dt = now - this.last;
         this.last = now;
 
-        this.player.update();
+        this.updatePlayer(now, dt);
+        this.updateEnemies(now, dt);
+        this.updateHits(now, dt);
+        this.updatePortal(now, dt);
+    },
 
+    updatePlayer : function(now, dt) {
+        this.player.update();
         var speed = this.player.speed;
         if (this.playerVector.x != 0 && this.playerVector.y != 0) {
             speed = speed / Math.sqrt(2);
         }
 
         this.player.move(speed * this.playerVector.x * dt / 1000, speed * this.playerVector.y * dt / 1000);
+    },
+
+    updateEnemies : function(now, dt) {
         for (var i = 0; i < this.enemies.length; i++) {
             this.enemies[i].update(this, dt);
         }
@@ -90,8 +112,9 @@ var Level = cc.LayerColor.extend({
                 level.enemies.splice(index, 1);
             }
         }
+    },
 
-        //hits
+    updateHits : function(now, dt) {
         if (this.player.hitTime + this.player.reloadingTime <= now) {
             var enemiesToHit = [];
             for (var i = 0; i < this.enemies.length; i++) {
@@ -113,8 +136,9 @@ var Level = cc.LayerColor.extend({
                 }
             }
         }
+    },
 
-        //portal
+    updatePortal : function(now, dt) {
         this.portalState = "normal";
         for (var i = 0; i < this.enemies.length; i++) {
             var enemy = this.enemies[i];
@@ -135,7 +159,7 @@ var Level = cc.LayerColor.extend({
         if (this.portalSprite != null) {
             this.portalSprite.removeFromParent();
         }
-        this.portalIndex += 0.3;
+        this.portalIndex += 0.15;
         if (Math.round(this.portalIndex) >= this.portalSprites.length) {
             this.portalIndex = 1;
         }
@@ -144,7 +168,9 @@ var Level = cc.LayerColor.extend({
     },
 
     onKeyUp : function(e) {
+        console.log("update", this);
         if (this.state != "play") {
+            console.log(this.state);
             return;
         }
 
@@ -214,11 +240,20 @@ var Level = cc.LayerColor.extend({
 });
 
 Level.scene = cc.Scene.extend({
-    onEnter:function () {
-        this._super();
-        var layer = new Level();
-        layer.init();
-        this.addChild(layer);
+    onEnter:function () { this._super(); }
+});
+
+Object.defineProperty(Level, "instance", {
+    get : function() {
+        if (Level._instance == null) {
+            Level._instance = new Level.scene();
+            var layer = new Level();
+            layer.init();
+            Level._instance.addChild(layer);
+
+            Level._instance.start = function() { layer.start(); };
+        }
+        return Level._instance;
     }
 });
 

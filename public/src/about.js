@@ -6,13 +6,14 @@ var About = cc.Layer.extend({
         background.setPosition(cc.p(Game.size.width / 2, Game.size.height / 2));
         this.addChild(background);
 
-        var back = cc.MenuItemImage.create(s_Back, s_BackActive, function () { cc.Director.getInstance().replaceScene(new MainMenu.scene()); }, this);
+        var back = cc.MenuItemImage.create(s_Back, s_BackActive, function () {
+            cc.Director.getInstance().replaceScene(MainMenu.instance);
+        }, this);
         back.setAnchorPoint(cc.p(0.5, 0.5));
         back.setPosition(cc.p(900, 60));
 
         var menu = cc.Menu.create(back);
         menu.setPosition(cc.p(0, 0));
-        menu.addChild(back);
 
         var info = cc.MenuItemImage.create(s_Info, s_Info, function () { window.open("mailto:info@gprism.com", "_blank"); }, this);
         info.setAnchorPoint(cc.p(0.5, 0.5));
@@ -29,12 +30,16 @@ var About = cc.Layer.extend({
     }
 });
 
-About.scene = cc.Scene.extend({
-    onEnter:function () {
-        this._super();
-        var layer = new About();
-        layer.init();
-        this.addChild(layer);
+About.scene = cc.Scene.extend({ onEnter:function () { this._super(); } });
+Object.defineProperty(About, "instance", {
+    get : function() {
+        if (About._instance == null) {
+            About._instance = new About.scene();
+            var layer = new About();
+            layer.init();
+            About._instance.addChild(layer);
+        }
+        return About._instance;
     }
 });
 

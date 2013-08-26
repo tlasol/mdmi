@@ -18,6 +18,11 @@ var s_Info = "res/info.png";
 var s_Health = "res/healthOrb.png";
 var s_Mana = "res/manaOrb.png";
 var s_Orbs = "res/orbs.png";
+var s_GameOver = "res/gameOver.png";
+var s_MainMenuButton = "res/mainMenuButton.png";
+var s_MainMenuButtonActive = "res/mainMenuButtonActive.png";
+var s_TryAgainButton = "res/tryAgainButton.png";
+var s_TryAgainButtonActive = "res/tryAgainButtonActive.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
@@ -48,6 +53,11 @@ var g_resources = [
     { src : s_Health },
     { src : s_Mana },
     { src : s_Orbs },
+    { src : s_GameOver },
+    { src : s_MainMenuButton },
+    { src : s_MainMenuButtonActive },
+    { src : s_TryAgainButton },
+    { src : s_TryAgainButtonActive },
 
     //plist
     { src : s_Hero_plist },
