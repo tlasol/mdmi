@@ -1,51 +1,38 @@
 var GameOver = function() {
+    this.background = null;
+    this.menu = null;
+
     this.init = function(layer) {
-        var background = null;
-        var menu = null;
-        var removeIt = function() {
-            initLevels();
-            layer.enemies = [];
-            layer.portalTimer = 10000;
-            layer.portalState = "normal";
-            layer.last = null;
+        this.background = cc.Sprite.create(s_GameOver);
+        this.background.setPosition(cc.p(Game.size.width / 2, Game.size.height / 2));
+        this.background.setZOrder(10000);
 
-            layer.player.x = Game.size.width / 2;
-            layer.player.y = Game.size.height / 2;
-            layer.player.hp = layer.player.maxHp;
-            layer.player.mana = layer.player.maxMana;
-
-            background.removeFromParent();
-            menu.removeFromParent();
-        }
-
-        background = cc.Sprite.create(s_GameOver);
-        background.setPosition(cc.p(Game.size.width / 2, Game.size.height / 2));
-        background.setZOrder(10000);
-
-        var mainMenu = cc.MenuItemImage.create(s_MainMenuButton, s_MainMenuButtonActive, function () {
-            removeIt();
-            cc.Director.getInstance().replaceScene(new MainMenu.scene());
-        }, this);
+        var mainMenu = cc.MenuItemImage.create(s_MainMenuButton, s_MainMenuButtonActive, function () { cc.Director.getInstance().replaceScene(new MainMenu.scene()); }, this);
         mainMenu.setAnchorPoint(cc.p(0.5, 0.5));
         mainMenu.setPosition(cc.p(505, 205));
         mainMenu.setZOrder(12000);
 
         var tryAgain = cc.MenuItemImage.create(s_TryAgainButton, s_TryAgainButtonActive, function () {
-            layer.state = "play";
-            removeIt();
+            this.removeIt();
+            layer.start();
         }, this);
         tryAgain.setAnchorPoint(cc.p(0.5, 0.5));
         tryAgain.setPosition(cc.p(505, 275));
         tryAgain.setZOrder(12000);
         ha = tryAgain;
 
-        var menu = cc.Menu.create(mainMenu);
-        menu.setPosition(cc.p(0, 0));
-        menu.addChild(tryAgain);
-        menu.setZOrder(11000);
+        this.menu = cc.Menu.create(mainMenu);
+        this.menu.setPosition(cc.p(0, 0));
+        this.menu.addChild(tryAgain);
+        this.menu.setZOrder(11000);
 
-        layer.addChild(background);
-        layer.addChild(menu);
+        layer.addChild(this.background);
+        layer.addChild(this.menu);
+    };
+
+    this.removeIt = function() {
+        this.background.removeFromParent();
+        this.menu.removeFromParent();
     };
 };
 

@@ -5,22 +5,33 @@ var Level = cc.LayerColor.extend({
     start : function() {
         initLevels();
 
-        console.log("!!!");
+        console.log(this.enemies)
+        if (this.enemies != null) {
+            for (var i = 0; i < this.enemies.length; i++) {
+                console.log(this.enemies[i])
+                this.enemies[i].removeFromLayer();
+            }
+        }
+
         this.portalIndex = 0;
         this.state = "play";
 
         this.playerVector = { x : 0, y : 0 };
         this.enemies = [];
-        this.portalTimer = 1000;
+        this.portalTimer = 10000.1;
         this.portalState = "normal";
         this.last = null;
+        if (this.gameOver != null) {
+            this.gameOver.removeIt();
+        }
+        this.gameOver = null;
 
-        this.update();
+        this.portalLabel.setString(this.portalTimer == 0 ? 0 : ("" + this.portalTimer / 1000 + "0000000").substring(0, 5));
+        this.portalLabel.draw();
     },
 
     init:function () {
         this._super();
-        console.log();
 
         var background = cc.Sprite.create(s_LevelBackground);
         background.setPosition(cc.p(Game.size.width / 2, Game.size.height / 2));
@@ -35,16 +46,13 @@ var Level = cc.LayerColor.extend({
         this.setKeyboardEnabled(true);
         this.setMouseEnabled(true);
 
-        this.portalLabel = cc.LabelTTF.create("10.00", "Arial Bold", 48);
+        this.portalLabel = cc.LabelTTF.create(this.portalTimer == 0 ? 0 : ("" + this.portalTimer / 1000 + "0000000").substring(0, 5), "Arial Bold", 48);
         this.portalLabel.setPosition(cc.p(666, 66));
         this.portalLabel.setZOrder(1000);
         this.addChild(this.portalLabel);
         ha = this.portalLabel;
 
         this.player = new Player(this, "hero", Game.size.width / 2, Game.size.height / 2, null, 500);
-
-        this.scheduleUpdate();
-        this.schedule(this.update, 1);
 
         for (var i = 0; i < 5; i++) {
             var sprite = cc.Sprite.createWithSpriteFrameName("portal_0" + i);
@@ -168,9 +176,7 @@ var Level = cc.LayerColor.extend({
     },
 
     onKeyUp : function(e) {
-        console.log("update", this);
         if (this.state != "play") {
-            console.log(this.state);
             return;
         }
 
@@ -247,12 +253,15 @@ Object.defineProperty(Level, "instance", {
     get : function() {
         if (Level._instance == null) {
             Level._instance = new Level.scene();
-            var layer = new Level();
-            layer.init();
-            Level._instance.addChild(layer);
+            Level._instance.layer = new Level();
+            Level._instance.layer.init();
+            Level._instance.addChild(Level._instance.layer);
 
-            Level._instance.start = function() { layer.start(); };
+            Level._instance.start = function() { Level._instance.layer.start(); };
         }
+
+        Level._instance.layer.scheduleUpdate();
+        Level._instance.layer.schedule(Level._instance.layer.update, 1);
         return Level._instance;
     }
 });
