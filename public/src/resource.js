@@ -77,6 +77,15 @@ var g_resources = [
     //effect
 ];
 
+var dialogues = {
+    '1' : 3,
+
+    length : 1,
+    getDialogueSource : function(level, index) {
+        return "res/dialogues/" + level + "/" + index + ".png"
+    }
+};
+
 var Game = { size : { width : 1024, height : 576  }, level : 0 };
 function initLevels() {
     Game.levels = [
