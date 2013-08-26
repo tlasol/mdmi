@@ -46,7 +46,7 @@ var Level = cc.LayerColor.extend({
 
         if (this.player.skills[0] != null) {
             this.skill_0_Sprite = cc.Sprite.create(this.player.skills[0].icon);
-            this.skill_0_Sprite.setPosition(cc.p(179, 63));
+            this.skill_0_Sprite.setPosition(cc.p(178, 63));
             this.skill_0_Sprite.setZOrder(500);
             this.addChild(this.skill_0_Sprite);
             ha = this.skill_0_Sprite;

@@ -4,11 +4,11 @@ var Rush = {
     time : 500,
     speed : 0.8,
     splash : 50,
-    splashRadius : 30 * 30,
+    splashRadius : 50 * 50,
     damage : 3,
     timer : 0,
     vector : { x : 0, y : 0 },
-
+    playerDamageZone : 0,
 
     activate : function(layer) {
         this.timer = this.time;
@@ -16,6 +16,8 @@ var Rush = {
         var r = Math.sqrt(this.vector.x * this.vector.x + this.vector.y * this.vector.y);
         this.vector.x = this.vector.x / r;
         this.vector.y = this.vector.y / r;
+        this.playerDamageZone = layer.player.damageZone;
+        layer.player.damageZone = 0;
         this.active = true;
     },
 
@@ -32,6 +34,7 @@ var Rush = {
                 }
 
                 enemy.move(enemyMoveVector.x * this.splash, enemyMoveVector.y * this.splash);
+                enemy.damage(this.damage);
             }
         }
 
@@ -42,6 +45,7 @@ var Rush = {
         layer.player.move(this.speed * this.vector.x * dt, this.speed * this.vector.y * dt);
         if (this.timer <= 0) {
             this.active = false;
+            layer.player.damageZone = this.playerDamageZone;
         }
     }
 };
