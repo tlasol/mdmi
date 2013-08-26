@@ -129,7 +129,7 @@ function Poring(layer, speed, size) {
         dx = dx * speed * dt / (l * 1000) ;
         dy = dy * speed * dt / (l * 1000);
         this.move(dx, dy);
-    }, size, 2);
+    }, size, 6);
 }
 
 Object.inheritance(Poring, Enemy);
@@ -166,7 +166,7 @@ function Player(layer, name, x, y, size, zOrder) {
     this.maxHp = 6;
     this.mana = 6;
     this.maxMana = 6;
-    this.damagePower = 1;
+    this.damagePower = 3;
     this.damageZone = 75;
     this.damageAngle = 45;
     this.hitTime = new Date().getTime();
@@ -184,7 +184,7 @@ function Player(layer, name, x, y, size, zOrder) {
 
     this.old_hp = null;
     this.old_mana = null;
-    this.skills = { '0' : Rush };
+    this.skills = { '0' : Rush, '1' : Berserk, '2' : Berserk };
 
     layer.addChild(this.aura);
 

@@ -18,7 +18,7 @@
             'src/objects.js',
             'src/about.js',
             "src/gameOver.js",
-            "src/skils.js"
+            "src/skills.js"
         ]
     };
 

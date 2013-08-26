@@ -24,6 +24,8 @@ var s_MainMenuButtonActive = "res/mainMenuButtonActive.png";
 var s_TryAgainButton = "res/tryAgainButton.png";
 var s_TryAgainButtonActive = "res/tryAgainButtonActive.png";
 var s_RushIcon = "res/skills/rush.png";
+var s_BerserkIcon = "res/skills/berserk.png";
+var s_berserkEffect = "res/skills/berserkEffect.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
@@ -32,6 +34,7 @@ var s_Aura_plist = "res/plists/aura.plist";
 var s_Catbug_plist = "res/plists/catbug.plist";
 var s_Health_plist = "res/plists/healthOrb.plist";
 var s_Mana_plist = "res/plists/manaOrb.plist";
+var s_berserkEffect_plist = "res/plists/berserkEffect.plist";
 
 var g_resources = [
     { src : s_MainMenu },
@@ -59,6 +62,9 @@ var g_resources = [
     { src : s_MainMenuButtonActive },
     { src : s_TryAgainButton },
     { src : s_TryAgainButtonActive },
+    { src : s_RushIcon },
+    { src : s_BerserkIcon },
+    { src : s_berserkEffect },
 
     //plist
     { src : s_Hero_plist },
@@ -67,7 +73,8 @@ var g_resources = [
     { src : s_Aura_plist },
     { src : s_Catbug_plist },
     { src : s_Health_plist },
-    { src : s_Mana_plist }
+    { src : s_Mana_plist },
+    { src : s_berserkEffect_plist }
 
     //fnt
 
@@ -103,73 +110,17 @@ var Game = { size : { width : 1024, height : 576  }, level : 0 };
 function initLevels() {
     Game.levels = [
         {
-            enemyProbability : 0.005,
             enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 1, create : function(layer) { return new Poring(layer, 80); } }
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         },
         {
-            enemyProbability : 0.005,
             enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 2, create : function(layer) { return new Poring(layer, 80); } }
-            ]
-        },
-        {
-            enemyProbability : 0.005,
-            enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 3, create : function(layer) { return new Poring(layer, 80); } }
-            ]
-        },
-        {
-            enemyProbability : 0.005,
-            enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 4, create : function(layer) { return new Poring(layer, 80); } }
-            ]
-        },
-        {
-            enemyProbability : 0.005,
-            enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 5, create : function(layer) { return new Poring(layer, 80); } }
-            ]
-        },
-        {
-            enemyProbability : 0.005,
-            enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 6, create : function(layer) { return new Poring(layer, 80); } }
-            ]
-        },
-        {
-            enemyProbability : 0.005,
-            enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 7, create : function(layer) { return new Poring(layer, 80); } }
-            ]
-        },
-        {
-            enemyProbability : 0.005,
-            enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 8, create : function(layer) { return new Poring(layer, 80); } }
-            ]
-        },
-        {
-            enemyProbability : 0.005,
-            enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 9, create : function(layer) { return new Poring(layer, 80); } }
-            ]
-        },
-        {
-            enemyProbability : 0.005,
-            enemies : [
-                //{ count : 1, create : function(layer) { return new Catbug(layer, 100); } },
-                { count : 10, create : function(layer) { return new Poring(layer, 80); } }
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         }
     ]
@@ -186,4 +137,5 @@ function loadResources() {
     cache.addSpriteFrames(s_Catbug_plist, s_Catbug);
     cache.addSpriteFrames(s_Health_plist, s_Health);
     cache.addSpriteFrames(s_Mana_plist, s_Mana);
+    cache.addSpriteFrames(s_berserkEffect_plist, s_berserkEffect);
 }

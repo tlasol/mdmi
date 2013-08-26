@@ -9,7 +9,6 @@ var Level = cc.LayerColor.extend({
     start : function() {
         initLevels();
 
-        console.log(this.enemies)
         if (this.enemies != null) {
             for (var i = 0; i < this.enemies.length; i++) {
                 console.log(this.enemies[i])
@@ -49,8 +48,23 @@ var Level = cc.LayerColor.extend({
             this.skill_0_Sprite.setPosition(cc.p(178, 63));
             this.skill_0_Sprite.setZOrder(500);
             this.addChild(this.skill_0_Sprite);
-            ha = this.skill_0_Sprite;
         }
+
+        if (this.player.skills[1] != null) {
+            this.skill_1_Sprite = cc.Sprite.create(this.player.skills[1].icon);
+            this.skill_1_Sprite.setPosition(cc.p(248, 63));
+            this.skill_1_Sprite.setZOrder(500);
+            this.addChild(this.skill_1_Sprite);
+        }
+
+        if (this.player.skills[2] != null) {
+            this.skill_2_Sprite = cc.Sprite.create(this.player.skills[2].icon);
+            this.skill_2_Sprite.setPosition(cc.p(318, 63));
+            this.skill_2_Sprite.setZOrder(500);
+            this.addChild(this.skill_2_Sprite);
+        }
+
+        ha = this.skill_1_Sprite;
 
         this.initDialogue();
     },
@@ -75,7 +89,6 @@ var Level = cc.LayerColor.extend({
         this.portalLabel.setPosition(cc.p(666, 66));
         this.portalLabel.setZOrder(1000);
         this.addChild(this.portalLabel);
-        ha = this.portalLabel;
 
         this.player = new Player(this, "hero", Game.size.width / 2, Game.size.height / 2, null, 500);
 
@@ -120,8 +133,10 @@ var Level = cc.LayerColor.extend({
             speed = speed / Math.sqrt(2);
         }
 
-        if (this.player.skills["0"] != null && this.player.skills["0"].active) {
-            this.player.skills["0"].update(this, dt);
+        for (var i = 0; i < 3; i++) {
+            if (this.player.skills[i] != null && this.player.skills[i].active) {
+                this.player.skills[i].update(this, dt);
+            }
         }
         this.player.move(speed * this.playerVector.x * dt / 1000, speed * this.playerVector.y * dt / 1000);
     },
@@ -138,25 +153,11 @@ var Level = cc.LayerColor.extend({
                 this.start();
                 return;
             }
-        }
-        if (Math.random() < level.enemyProbability || this.enemies.length == 0) {
-            if (level.enemies.length == 0) {
-                return;
+            var enemies = level.enemies[0](this);
+            for (var i = 0; i < enemies.length; i++) {
+                this.enemies.push(enemies[i]);
             }
-
-            var index = Math.round(Game.levels[Game.level].enemies.length * Math.random());
-            if (index >= Game.levels.length) {
-                index = Game.levels.length - 1;
-            }
-            var enemyDescription = level.enemies[index];
-            if (enemyDescription == null) {
-                return;
-            }
-            this.enemies.push(enemyDescription.create(this));
-            enemyDescription.count--;
-            if (enemyDescription.count <= 0) {
-                level.enemies.splice(index, 1);
-            }
+            level.enemies.splice(0, 1);
         }
     },
 
@@ -219,6 +220,12 @@ var Level = cc.LayerColor.extend({
         }
         if (e == 49 && this.player.skills[0] != null) {
             this.player.skills[0].activate(this);
+        }
+        if (e == 50 && this.player.skills[1] != null) {
+            this.player.skills[1].activate(this);
+        }
+        if (e == 51 && this.player.skills[2] != null) {
+            this.player.skills[2].activate(this);
         }
 
 
