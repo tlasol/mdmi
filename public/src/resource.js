@@ -173,30 +173,30 @@ function initLevels() {
         },
         {//6
             enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Catbug(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         },
         {//7
             enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Mint(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         },
         {//8
             enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Mint(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Mint(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         },
         {//9
             enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
                 function(layer) { return [ new Mint(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Mint(layer, 80) ]; }
+                function(layer) { return [ new Mint(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Mint(layer, 80), new Mint(layer, 80) ]; }
             ]
         }
     ]
