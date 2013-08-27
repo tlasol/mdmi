@@ -138,6 +138,55 @@ function initLevels() {
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
+        },
+        {
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
         }
     ]
 }
