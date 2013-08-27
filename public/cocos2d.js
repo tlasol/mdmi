@@ -1,10 +1,10 @@
 (function () {
     var d = document;
     var c = {
-        COCOS2D_DEBUG:2, //0 to turn debug off, 1 for basic debug, and 2 for full debug
+        COCOS2D_DEBUG:0,
         box2d:false,
         chipmunk:false,
-        showFPS:true,
+        showFPS:false,
         frameRate:60,
         loadExtension:false,
         renderMode:0,
