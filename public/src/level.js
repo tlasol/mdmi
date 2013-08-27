@@ -11,7 +11,6 @@ var Level = cc.LayerColor.extend({
 
         if (this.enemies != null) {
             for (var i = 0; i < this.enemies.length; i++) {
-                console.log(this.enemies[i])
                 this.enemies[i].removeFromLayer();
             }
         }
@@ -64,7 +63,8 @@ var Level = cc.LayerColor.extend({
             this.addChild(this.skill_2_Sprite);
         }
 
-        ha = this.skill_2_Sprite;
+        this.player.hp = 6;
+        this.player.mana = 6;
 
         this.initDialogue();
     },
@@ -150,6 +150,14 @@ var Level = cc.LayerColor.extend({
         if (this.enemies.length == 0) {
             if (level.enemies.length == 0) {
                 Game.level++;
+                if (Game.levels.length <= Game.level) {
+                    this.state = "win!!!";
+                    var win = cc.Sprite.create(s_Epilogue);
+                    win.setPosition(cc.p(Game.size.width / 2, Game.size.height / 2));
+                    win.setZOrder(20000);
+                    this.addChild(win);
+                    return;
+                }
                 this.start();
                 return;
             }

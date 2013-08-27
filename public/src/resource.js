@@ -31,7 +31,7 @@ var s_Nudist = "res/nudist.png";
 var s_Poporing = "res/poporing.png";
 var s_LightIcon = "res/skills/light.png";
 var s_LightEffect = "res/skills/lightEffect.png";
-var s_Epilogue = "res/dialogues/epilogue.pmg";
+var s_Epilogue = "res/dialogues/epilogue.png";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
