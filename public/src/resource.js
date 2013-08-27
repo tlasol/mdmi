@@ -31,6 +31,7 @@ var s_Nudist = "res/nudist.png";
 var s_Poporing = "res/poporing.png";
 var s_LightIcon = "res/skills/light.png";
 var s_LightEffect = "res/skills/lightEffect.png";
+var s_Epilogue = "res/dialogues/epilogue.pmg";
 
 var s_Hero_plist = "res/plists/hero.plist";
 var s_Poring_plist = "res/plists/poring.plist";
@@ -78,6 +79,7 @@ var g_resources = [
     { src : s_Poporing },
     { src : s_LightIcon },
     { src : s_LightEffect },
+    { src : s_Epilogue },
 
     //plist
     { src : s_Hero_plist },
@@ -127,57 +129,9 @@ function initLevels() {
     Game.levels = [
         {
             enemies : [
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
-            ]
-        },
-        {
-            enemies : [
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
-            ]
-        },
-        {
-            enemies : [
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
-            ]
-        },
-        {
-            enemies : [
                 function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
-            ]
-        },
-        {
-            enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
-            ]
-        },
-        {
-            enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
-            ]
-        },
-        {
-            enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
-            ]
-        },
-        {
-            enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+                function(layer) { return [ new Mint(layer, 80), new Nudist(layer, 80) ]; },
+                function(layer) { return [ new Poporing(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         },
         {
