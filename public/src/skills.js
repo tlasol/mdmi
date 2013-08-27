@@ -103,18 +103,34 @@ var Berserk = createSkill({
 
 var Light = createSkill({
     icon : s_LightIcon,
-    mana : 1,
+    mana : 0,
+    damage : 10,
     time : 1000,
 
     activateInternal : function(layer) {
+        if (this.sprite != null) {
+            this.sprite.removeFromParent();
+        }
         var angle = Math.atan2(layer.mouse.x - layer.player.x, layer.mouse.y - layer.player.y);
+        vector = { x : layer.mouse.x - layer.player.x, y : layer.mouse.y - layer.player.y };
+        var r = Math.sqrt(vector.x * vector.x + vector.y * vector.y);
+        vector.x = vector.x / r;
+        vector.y = vector.y / r;
+
         this.sprite = cc.Sprite.create(s_LightEffect);
-        this.sprite.setPosition(layer.player.x, layer.player.y);
+        this.sprite.setPosition(layer.player.x + vector.x * 500, layer.player.y + vector.y * 500);
         this.sprite.setOpacity(150);
         this.sprite.setRotation(angle * (180 / Math.PI));
         this.sprite.setZOrder(503);
         layer.addChild(this.sprite);
 
+        for (var i = 0; i < layer.enemies.length; i++) {
+            var enemy = layer.enemies[i];
+            var enemyAngle = Math.atan2(enemy.x - layer.player.x, enemy.y - layer.player.y);
+            if (Math.abs(enemyAngle - angle) < 0.2) {
+                enemy.damage(this.damage);
+            }
+        }
     },
 
     updateInternal : function(layer, dt) { },
