@@ -159,6 +159,81 @@ function Catbug(layer, speed, size) {
 
 Object.inheritance(Catbug, Enemy);
 
+function Nudist(layer, speed, size) {
+    this.hitTime = 0;
+    this.reloadingTime = 1000;
+    this.damagePower = 1;
+
+    Nudist.superclass.call(this, layer, "nudist", function(layer, dt) {
+        var dx = layer.player.x - this.x;
+        var dy = layer.player.y - this.y;
+        if (dx * dx + dy * dy < 10) {
+            var now = (new Date()).getTime();
+            if (this.hitTime + this.reloadingTime <= now) {
+                layer.player.damage(layer, this.damagePower);
+                this.hitTime = now;
+            }
+            return;
+        }
+        var l = Math.sqrt(dx * dx + dy * dy);
+        dx = dx * speed * dt / (l * 1000) ;
+        dy = dy * speed * dt / (l * 1000);
+        this.move(dx, dy);
+    }, size, 3);
+}
+
+Object.inheritance(Nudist, Enemy);
+
+function Poporing(layer, speed, size) {
+    this.hitTime = 0;
+    this.reloadingTime = 1000;
+    this.damagePower = 1;
+
+    Poporing.superclass.call(this, layer, "poporing", function(layer, dt) {
+        var dx = layer.player.x - this.x;
+        var dy = layer.player.y - this.y;
+        if (dx * dx + dy * dy < 10) {
+            var now = (new Date()).getTime();
+            if (this.hitTime + this.reloadingTime <= now) {
+                layer.player.damage(layer, this.damagePower);
+                this.hitTime = now;
+            }
+            return;
+        }
+        var l = Math.sqrt(dx * dx + dy * dy);
+        dx = dx * speed * dt / (l * 1000) ;
+        dy = dy * speed * dt / (l * 1000);
+        this.move(dx, dy);
+    }, size, 3);
+}
+
+Object.inheritance(Poporing, Enemy);
+
+function Mint(layer, speed, size) {
+    this.hitTime = 0;
+    this.reloadingTime = 1000;
+    this.damagePower = 1;
+
+    Mint.superclass.call(this, layer, "mint", function(layer, dt) {
+        var dx = layer.player.x - this.x;
+        var dy = layer.player.y - this.y;
+        if (dx * dx + dy * dy < 10) {
+            var now = (new Date()).getTime();
+            if (this.hitTime + this.reloadingTime <= now) {
+                layer.player.damage(layer, this.damagePower);
+                this.hitTime = now;
+            }
+            return;
+        }
+        var l = Math.sqrt(dx * dx + dy * dy);
+        dx = dx * speed * dt / (l * 1000) ;
+        dy = dy * speed * dt / (l * 1000);
+        this.move(dx, dy);
+    }, size, 3);
+}
+
+Object.inheritance(Mint, Enemy);
+
 function Player(layer, name, x, y, size, zOrder) {
     Player.superclass.call(this, layer, name, x, y, size, zOrder);
 
