@@ -145,9 +145,9 @@ function initLevels() {
         },
         {//2
             enemies : [
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80), new Poporing(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poporing(layer, 80) ]; }
+                function(layer) { return [ new Catbug(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Catbug(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; }
             ]
         },
         {//3
@@ -167,27 +167,27 @@ function initLevels() {
         {//5
             enemies : [
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Nudist(layer, 80), new Nudist(layer, 80), new Nudist(layer, 80), new Poporing(layer, 80) ]; },
+                function(layer) { return [ new Nudist(layer, 80), new Nudist(layer, 80), new Nudist(layer, 80) ]; }
             ]
         },
         {//6
             enemies : [
-                function(layer) { return [ new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Catbug(layer, 80) ]; },
-                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+                function(layer) { return [ new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80), new Nudist(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Catbug(layer, 80), new Nudist(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Nudist(layer, 80) ]; }
             ]
         },
         {//7
             enemies : [
-                function(layer) { return [ new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80), new Nudist(layer, 80), new Nudist(layer, 80), new Nudist(layer, 80), new Nudist(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Mint(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         },
         {//8
             enemies : [
-                function(layer) { return [ new Poring(layer, 80), new Mint(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Mint(layer, 80), new Nudist(layer, 80), new Nudist(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Mint(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
@@ -196,7 +196,7 @@ function initLevels() {
             enemies : [
                 function(layer) { return [ new Mint(layer, 80), new Poring(layer, 80) ]; },
                 function(layer) { return [ new Mint(layer, 80), new Poring(layer, 80) ]; },
-                function(layer) { return [ new Mint(layer, 80), new Mint(layer, 80) ]; }
+                function(layer) { return [ new Mint(layer, 80), new Mint(layer, 80), new Nudist(layer, 80), new Nudist(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; }
             ]
         }
     ]
