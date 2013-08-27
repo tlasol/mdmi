@@ -127,21 +127,20 @@ function initLevels() {
     Game.levels = [
         {
             enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Mint(layer, 80), new Nudist(layer, 80) ]; },
-                function(layer) { return [ new Poporing(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
-            ]
-        },
-        {
-            enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         },
         {
             enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
