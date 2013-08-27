@@ -137,7 +137,7 @@ Object.inheritance(Poring, Enemy);
 function Catbug(layer, speed, size) {
     this.hitTime = 0;
     this.reloadingTime = 1000;
-    this.damagePower = 1;
+    this.damagePower = 2;
 
     Catbug.superclass.call(this, layer, "catbug", function(layer, dt) {
         var dx = layer.player.x - this.x;
@@ -154,7 +154,7 @@ function Catbug(layer, speed, size) {
         dx = dx * speed * dt / (l * 1000) ;
         dy = dy * speed * dt / (l * 1000);
         this.move(dx, dy);
-    }, size, 3);
+    }, size, 6);
 }
 
 Object.inheritance(Catbug, Enemy);
@@ -204,7 +204,7 @@ function Poporing(layer, speed, size) {
         dx = dx * speed * dt / (l * 1000) ;
         dy = dy * speed * dt / (l * 1000);
         this.move(dx, dy);
-    }, size, 3);
+    }, size, 9);
 }
 
 Object.inheritance(Poporing, Enemy);
@@ -212,7 +212,7 @@ Object.inheritance(Poporing, Enemy);
 function Mint(layer, speed, size) {
     this.hitTime = 0;
     this.reloadingTime = 1000;
-    this.damagePower = 1;
+    this.damagePower = 3;
 
     Mint.superclass.call(this, layer, "mint", function(layer, dt) {
         var dx = layer.player.x - this.x;
@@ -229,7 +229,7 @@ function Mint(layer, speed, size) {
         dx = dx * speed * dt / (l * 1000) ;
         dy = dy * speed * dt / (l * 1000);
         this.move(dx, dy);
-    }, size, 3);
+    }, size, 12);
 }
 
 Object.inheritance(Mint, Enemy);

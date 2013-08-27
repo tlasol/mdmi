@@ -103,8 +103,8 @@ var Berserk = createSkill({
 
 var Light = createSkill({
     icon : s_LightIcon,
-    mana : 0,
-    damage : 10,
+    mana : 2,
+    damage : 3,
     time : 1000,
 
     activateInternal : function(layer) {

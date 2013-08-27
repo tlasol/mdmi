@@ -107,7 +107,10 @@ var dialogues = {
     '0' : [ { x : 512, y : 288 }, { x : 512, y : 288 }, { x : 512, y : 288 }, { x : 550, y : 400 }, { x : 500, y : 300 }, { x : 550, y : 400 } ],
     '1' : [ { x : 550, y : 400 }, { x : 500, y : 300 } ],
     '2' : [ { x : 550, y : 400 }, { x : 500, y : 300 } ],
+    '3' : [ { x : 512, y : 288 } ],
     '4' : [ { x : 550, y : 400 }, { x : 500, y : 300 } ],
+    '5' : [ { x : 512, y : 288 } ],
+    '6' : [ { x : 512, y : 288 } ],
     '7' : [ { x : 550, y : 400 }, { x : 500, y : 300 }, { x : 550, y : 400 } ],
     '8' : [ { x : 550, y : 400 }, { x : 500, y : 300 } ],
     '9' : [ { x : 550, y : 400 }, { x : 500, y : 300 }, { x : 550, y : 400 }, { x : 500, y : 300 }, { x : 550, y : 400 } ],
@@ -127,18 +130,73 @@ for (var i = 0; i < dialogues.length; i++) {
 var Game = { size : { width : 1024, height : 576  }, level : 0 };
 function initLevels() {
     Game.levels = [
-        {
+        {//0
             enemies : [
-                function(layer) { return [ new Poring(layer, 80) ]; },
-                function(layer) { return [ new Mint(layer, 80), new Nudist(layer, 80) ]; },
-                function(layer) { return [ new Poporing(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
             ]
         },
-        {
+        {//1
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {//2
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80), new Poporing(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poporing(layer, 80) ]; }
+            ]
+        },
+        {//3
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80), new Poporing(layer, 80) ]; },
+                function(layer) { return [ new Poporing(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; }
+            ]
+        },
+        {//4
+            enemies : [
+                function(layer) { return [ new Poporing(layer, 80), new Poporing(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Catbug(layer, 80) ]; }
+            ]
+        },
+        {//5
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Catbug(layer, 80), new Catbug(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80), new Poporing(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {//6
             enemies : [
                 function(layer) { return [ new Poring(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
                 function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {//7
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {//8
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Poring(layer, 80), new Poring(layer, 80), new Poring(layer, 80) ]; }
+            ]
+        },
+        {//9
+            enemies : [
+                function(layer) { return [ new Poring(layer, 80) ]; },
+                function(layer) { return [ new Mint(layer, 80), new Poring(layer, 80) ]; },
+                function(layer) { return [ new Mint(layer, 80) ]; }
             ]
         }
     ]
